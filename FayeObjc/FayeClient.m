@@ -193,6 +193,27 @@
   }
 }
 
+- (NSString *) base36Encode:(uint32_t)value
+{
+  NSString *base36 = @"0123456789abcdefghijklmnopqrstuvwxyz";
+  NSString *buffer = @"";
+  
+  do {
+    NSString *newChar = [NSString stringWithFormat:@"%c", [base36 characterAtIndex:(value % 36)]];
+    buffer = [newChar stringByAppendingString:buffer];
+  } while (value /= 36);
+  
+  return buffer;
+}
+
+- (NSString *) nextMessageId
+{
+  messageNumber++;
+  if (messageNumber >= UINT32_MAX) messageNumber = 0;
+  
+  return [self base36Encode:messageNumber];
+}
+
 - (void) send:(id)object
 {
     NSError *writeError = nil;
@@ -314,7 +335,7 @@
     return;
   }
   
-  NSString *messageId = [NSString stringWithFormat:@"msg_%d_%d", (int)[[NSDate date] timeIntervalSince1970], 1];
+  NSString *messageId = [self nextMessageId];
   NSDictionary *dict = nil;
   
   if(nil == extension) {
