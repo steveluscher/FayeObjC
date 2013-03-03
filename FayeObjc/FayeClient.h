@@ -94,6 +94,6 @@ typedef void(^FayeClientMessageHandler)(NSDictionary *);
 - (void) subscribeToChannel:(NSString *)channel;
 - (void) unsubscribeFromChannel:(NSString *)channel;
 - (BOOL) isSubscribedToChannel:(NSString *)channel;
-- (void) resubscribeOpenSubs;
+- (void) subscribeQueuedSubscriptions;
 
 @end
