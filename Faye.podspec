@@ -10,10 +10,10 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/pcrawfor/FayeObjC"
   s.license      = 'MIT'
   s.author       = "Paul Crawford"
-  s.source       = { :git => "https://github.com/steveluscher/FayeObjC.git", :branch => '2_0', :commit => '003a2cdb1d3754a4a5f37601647cf9a51d64bd9c' }
+  s.source       = { :git => "https://github.com/pcrawfor/FayeObjC.git", :branch => '2_0' }
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.6'
-  s.source_files = 'FayeObjC', 'FayeObjC/*.{h,m}', 'FayeObjC/Extensions/**/*.{h,m}'
+  s.source_files = 'src/*.{h,m}', 'lib/**/*.{h,m}'
   s.resources = "assets/*.{png,pxm}"
   s.requires_arc = true
 
